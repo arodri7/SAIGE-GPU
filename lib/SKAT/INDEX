@@ -1,0 +1,48 @@
+Close_SSD               Close SNP set data file (SSD)
+Generate_SSD_SetID      Generate SNP set data file (SSD)
+Get_EffectiveNumberTest
+                        Estimate the effective number of tests for
+                        Bonferroni correction
+Get_Genotypes_SSD       Get Genotype data from SSD file
+Get_Logistic_Weights    Get the logistic weight
+Get_RequiredSampleSize
+                        Get the required sample size to achieve the
+                        given power
+Get_Resampling_Pvalue   Compute a resampling p-value
+Open_SSD                Open SNP set data file (SSD)
+Power_Continuous        Power calculation, continuous traits
+Power_Logistic          Power calculation, Dichotomous traits
+QQPlot_Adj              Adjusted QQ plot
+Read_Plink_FAM          Read Plink FAM and covariates files
+Read_SNP_WeightFile     Read a file with custom weights
+Resampling_FWER         Obtain significant SNP sets after controlling
+                        family wise error rate (FWER)
+SKAT                    SNP-set (Sequence) Kernel Association Test
+SKAT.SSD.All            SNP-set Kernel Association Test
+SKAT.example            Example data for SKAT
+SKAT.example.ChrX       Example data for SKAT
+SKAT.fam.example        Example data for SKAT_NULL_emmaX
+SKAT.haplotypes         Haplotype dataset for power calculation
+SKATBinary              SNP set test for binary traits with asymptotic
+                        and efficient resampling methods
+SKATBinary.example      Example data for SKAT
+SKATBinary_Robust       SNP set test for binary traits with robust
+                        region-based methods
+SKATBinary_Single       Single variant tests for binary traits with
+                        Firth and efficient resampling methods
+SKAT_ChrX               SNP-set (Sequence) Kernel Association Test for
+                        X chromosome variables
+SKAT_CommonRare         SKAT for the combined effect of common and rare
+                        variants
+SKAT_CommonRare_Robust
+                        SNP set test (both common and rare variants)
+                        for binary traits with robust region-based
+                        methods
+SKAT_NULL_emmaX         Get parameters and residuals from the null
+                        model with incorporating the kinship structure
+SKAT_Null_Model         Get parameters and residuals from the NULL
+                        model
+SKAT_Null_Model_MomentAdjust
+                        Get parameters and residuals from the NULL
+                        model for small sample adjustment
+SSD_FILE_OPEN.isOpen    Internal variables for SSD

@@ -42,6 +42,26 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// getNumofSamples_Matrix
+int getNumofSamples_Matrix();
+RcppExport SEXP _SAIGE_getNumofSamples_Matrix() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(getNumofSamples_Matrix());
+    return rcpp_result_gen;
+END_RCPP
+}
+// getSampleIDlist_vcfMatrix
+std::vector< std::string > getSampleIDlist_vcfMatrix();
+RcppExport SEXP _SAIGE_getSampleIDlist_vcfMatrix() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(getSampleIDlist_vcfMatrix());
+    return rcpp_result_gen;
+END_RCPP
+}
 // getGenoOfGene_vcf
 Rcpp::List getGenoOfGene_vcf(std::string marker_group_line, float minInfo);
 RcppExport SEXP _SAIGE_getGenoOfGene_vcf(SEXP marker_group_lineSEXP, SEXP minInfoSEXP) {
@@ -1107,6 +1127,16 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
+// setIsDropMissingDosages_bgen
+void setIsDropMissingDosages_bgen(bool isdropmissingdosages);
+RcppExport SEXP _SAIGE_setIsDropMissingDosages_bgen(SEXP isdropmissingdosagesSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< bool >::type isdropmissingdosages(isdropmissingdosagesSEXP);
+    setIsDropMissingDosages_bgen(isdropmissingdosages);
+    return R_NilValue;
+END_RCPP
+}
 // setgenoTest_bgenDosage
 int setgenoTest_bgenDosage(std::string& filename, std::string& index_filename, Rcpp::DataFrame& ranges_to_include, Rcpp::DataFrame& ranges_to_exclude, std::vector< std::string > const& ids_to_include, std::vector< std::string > const& ids_to_exclude);
 RcppExport SEXP _SAIGE_setgenoTest_bgenDosage(SEXP filenameSEXP, SEXP index_filenameSEXP, SEXP ranges_to_includeSEXP, SEXP ranges_to_excludeSEXP, SEXP ids_to_includeSEXP, SEXP ids_to_excludeSEXP) {
@@ -1143,6 +1173,16 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// getDosage_inner_bgen_withquery_new_Sparse
+Rcpp::List getDosage_inner_bgen_withquery_new_Sparse();
+RcppExport SEXP _SAIGE_getDosage_inner_bgen_withquery_new_Sparse() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(getDosage_inner_bgen_withquery_new_Sparse());
+    return rcpp_result_gen;
+END_RCPP
+}
 // getDosage_bgen_withquery
 Rcpp::List getDosage_bgen_withquery();
 RcppExport SEXP _SAIGE_getDosage_bgen_withquery() {
@@ -1150,6 +1190,16 @@ BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     rcpp_result_gen = Rcpp::wrap(getDosage_bgen_withquery());
+    return rcpp_result_gen;
+END_RCPP
+}
+// getDosage_bgen_withquery_Sparse
+Rcpp::List getDosage_bgen_withquery_Sparse();
+RcppExport SEXP _SAIGE_getDosage_bgen_withquery_Sparse() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(getDosage_bgen_withquery_Sparse());
     return rcpp_result_gen;
 END_RCPP
 }
@@ -1194,15 +1244,14 @@ BEGIN_RCPP
 END_RCPP
 }
 // SetSampleIdx
-int SetSampleIdx(Rcpp::IntegerVector sample_idx, int Ntest);
+void SetSampleIdx(Rcpp::IntegerVector sample_idx, int Ntest);
 RcppExport SEXP _SAIGE_SetSampleIdx(SEXP sample_idxSEXP, SEXP NtestSEXP) {
 BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type sample_idx(sample_idxSEXP);
     Rcpp::traits::input_parameter< int >::type Ntest(NtestSEXP);
-    rcpp_result_gen = Rcpp::wrap(SetSampleIdx(sample_idx, Ntest));
-    return rcpp_result_gen;
+    SetSampleIdx(sample_idx, Ntest);
+    return R_NilValue;
 END_RCPP
 }
 // closetestGenoFile_bgenDosage
@@ -1258,6 +1307,16 @@ BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type testFieldInput(testFieldInputSEXP);
     setTestField(testFieldInput);
+    return R_NilValue;
+END_RCPP
+}
+// setIsDropMissingDosages_vcf
+void setIsDropMissingDosages_vcf(bool isdropmissingdosages);
+RcppExport SEXP _SAIGE_setIsDropMissingDosages_vcf(SEXP isdropmissingdosagesSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< bool >::type isdropmissingdosages(isdropmissingdosagesSEXP);
+    setIsDropMissingDosages_vcf(isdropmissingdosages);
     return R_NilValue;
 END_RCPP
 }
@@ -1403,6 +1462,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_SAIGE_SetSampleIdx_forGenetest_vcfDosage", (DL_FUNC) &_SAIGE_SetSampleIdx_forGenetest_vcfDosage, 2},
     {"_SAIGE_setMAFcutoffs", (DL_FUNC) &_SAIGE_setMAFcutoffs, 2},
     {"_SAIGE_setvcfDosageMatrix", (DL_FUNC) &_SAIGE_setvcfDosageMatrix, 3},
+    {"_SAIGE_getNumofSamples_Matrix", (DL_FUNC) &_SAIGE_getNumofSamples_Matrix, 0},
+    {"_SAIGE_getSampleIDlist_vcfMatrix", (DL_FUNC) &_SAIGE_getSampleIDlist_vcfMatrix, 0},
     {"_SAIGE_getGenoOfGene_vcf", (DL_FUNC) &_SAIGE_getGenoOfGene_vcf, 2},
     {"_SAIGE_closevcfDosageFile", (DL_FUNC) &_SAIGE_closevcfDosageFile, 0},
     {"_SAIGE_closeGenoFile_plink", (DL_FUNC) &_SAIGE_closeGenoFile_plink, 0},
@@ -1489,10 +1550,13 @@ static const R_CallMethodDef CallEntries[] = {
     {"_SAIGE_getCrossprodMatAndKin_mailman", (DL_FUNC) &_SAIGE_getCrossprodMatAndKin_mailman, 1},
     {"_SAIGE_get_GRMdiagVec", (DL_FUNC) &_SAIGE_get_GRMdiagVec, 0},
     {"_SAIGE_setminMAFforGRM", (DL_FUNC) &_SAIGE_setminMAFforGRM, 1},
+    {"_SAIGE_setIsDropMissingDosages_bgen", (DL_FUNC) &_SAIGE_setIsDropMissingDosages_bgen, 1},
     {"_SAIGE_setgenoTest_bgenDosage", (DL_FUNC) &_SAIGE_setgenoTest_bgenDosage, 6},
     {"_SAIGE_getDosage_inner_bgen_withquery", (DL_FUNC) &_SAIGE_getDosage_inner_bgen_withquery, 0},
     {"_SAIGE_getDosage_inner_bgen_withquery_new", (DL_FUNC) &_SAIGE_getDosage_inner_bgen_withquery_new, 0},
+    {"_SAIGE_getDosage_inner_bgen_withquery_new_Sparse", (DL_FUNC) &_SAIGE_getDosage_inner_bgen_withquery_new_Sparse, 0},
     {"_SAIGE_getDosage_bgen_withquery", (DL_FUNC) &_SAIGE_getDosage_bgen_withquery, 0},
+    {"_SAIGE_getDosage_bgen_withquery_Sparse", (DL_FUNC) &_SAIGE_getDosage_bgen_withquery_Sparse, 0},
     {"_SAIGE_getDosage_bgen_noquery", (DL_FUNC) &_SAIGE_getDosage_bgen_noquery, 0},
     {"_SAIGE_getQueryStatus", (DL_FUNC) &_SAIGE_getQueryStatus, 0},
     {"_SAIGE_getisReadVariantBgen", (DL_FUNC) &_SAIGE_getisReadVariantBgen, 0},
@@ -1503,6 +1567,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_SAIGE_getSampleSizeinBgen", (DL_FUNC) &_SAIGE_getSampleSizeinBgen, 0},
     {"_SAIGE_SetSampleIdx_vcfDosage", (DL_FUNC) &_SAIGE_SetSampleIdx_vcfDosage, 2},
     {"_SAIGE_setTestField", (DL_FUNC) &_SAIGE_setTestField, 1},
+    {"_SAIGE_setIsDropMissingDosages_vcf", (DL_FUNC) &_SAIGE_setIsDropMissingDosages_vcf, 1},
     {"_SAIGE_setgenoTest_vcfDosage", (DL_FUNC) &_SAIGE_setgenoTest_vcfDosage, 8},
     {"_SAIGE_getNumofSamples", (DL_FUNC) &_SAIGE_getNumofSamples, 0},
     {"_SAIGE_getSampleIDlist", (DL_FUNC) &_SAIGE_getSampleIDlist, 0},

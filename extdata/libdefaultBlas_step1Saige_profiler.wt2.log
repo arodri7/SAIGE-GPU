@@ -1,0 +1,694 @@
+R version 3.6.3 (2020-02-29)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 18.04.5 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.7.1
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.7.1
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8   LC_NUMERIC=C           LC_TIME=C.UTF-8       
+ [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
+ [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
+[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] optparse_1.6.6 Rcpp_1.0.5     SAIGE_0.42.1  
+
+loaded via a namespace (and not attached):
+[1] compiler_3.6.3     Matrix_1.2-18      getopt_1.20.3      grid_3.6.3        
+[5] RcppParallel_5.0.2 lattice_0.20-41   
+$plinkFile
+[1] "./input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly"
+
+$phenoFile
+[1] "./input/pheno_1000samples.txt_withdosages_withBothTraitTypes.txt"
+
+$phenoCol
+[1] "y_binary"
+
+$traitType
+[1] "binary"
+
+$invNormalize
+[1] FALSE
+
+$covarColList
+[1] "x1,x2"
+
+$sampleIDColinphenoFile
+[1] "IID"
+
+$tol
+[1] 0.02
+
+$maxiter
+[1] 20
+
+$tolPCG
+[1] 1e-05
+
+$maxiterPCG
+[1] 500
+
+$nThreads
+[1] 4
+
+$SPAcutoff
+[1] 2
+
+$numRandomMarkerforVarianceRatio
+[1] 30
+
+$skipModelFitting
+[1] FALSE
+
+$memoryChunk
+[1] 2
+
+$tauInit
+[1] "0,0"
+
+$LOCO
+[1] FALSE
+
+$traceCVcutoff
+[1] 0.0025
+
+$ratioCVcutoff
+[1] 0.001
+
+$outputPrefix
+[1] "./output/example_binary_includenonAutoforvarRatio"
+
+$IsOverwriteVarianceRatioFile
+[1] FALSE
+
+$IsSparseKin
+[1] FALSE
+
+$numRandomMarkerforSparseKin
+[1] 2000
+
+$isCateVarianceRatio
+[1] FALSE
+
+$relatednessCutoff
+[1] 0.125
+
+$cateVarRatioMinMACVecExclude
+[1] "0.5,1.5,2.5,3.5,4.5,5.5,10.5,20.5"
+
+$cateVarRatioMaxMACVecInclude
+[1] "1.5,2.5,3.5,4.5,5.5,10.5,20.5"
+
+$isCovariateTransform
+[1] TRUE
+
+$isDiagofKinSetAsOne
+[1] FALSE
+
+$useSparseSigmaConditionerforPCG
+[1] FALSE
+
+$useSparseSigmaforInitTau
+[1] FALSE
+
+$minMAFforGRM
+[1] 0.01
+
+$minCovariateCount
+[1] -1
+
+$includeNonautoMarkersforVarRatio
+[1] FALSE
+
+$FemaleOnly
+[1] FALSE
+
+$MaleOnly
+[1] FALSE
+
+$sexCol
+[1] ""
+
+$FemaleCode
+[1] "1"
+
+$MaleCode
+[1] "0"
+
+$noEstFixedEff
+[1] FALSE
+
+$help
+[1] FALSE
+
+tauInit  is  0 0 
+cateVarRatioMinMACVecExclude  is  0.5 1.5 2.5 3.5 4.5 5.5 10.5 20.5 
+cateVarRatioMaxMACVecInclude  is  1.5 2.5 3.5 4.5 5.5 10.5 20.5 
+Markers in the Plink file with MAF >=  0.01  will be used to construct GRM
+4  threads are set to be used  
+1000  samples have genotypes
+formula is  y_binary~x1+x2 
+1000  samples have non-missing phenotypes
+1000  samples will be used for analysis
+qr transformation has been performed on covariates
+colnames(data.new) is  Y minus1 x1 x2 
+out.transform$Param.transform$qrr:  3 3 
+y_binary  is a binary trait
+Start fitting the NULL GLMM
+   user  system elapsed 
+  1.196   0.117   1.301 
+[1] "Start reading genotype plink file here"
+nbyte: 250
+nbyte: 250
+reserve: 32474736
+
+M: 128868, N: 1000
+size of genoVecofPointers: 1
+setgeno mark1
+setgeno mark2
+111305 markers with MAF >= 0.01 are used for GRM.
+setgeno mark5
+setgeno mark6
+M by N size: 128868 M, 1000 N
+HELLO
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 2 1 2 0 1 1 1 1 1 0 1 1 1 1 0 0 1 1 0 1 0 0 1 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 1 1 1 1 2 2 1 2 2 1 1 1 2 1 1 1 1 2 2 1 0 0 1 2 0 1 1 0 0 1 0 1 0 0 0 1 1 0 0 0 1 0 0 0 1 0 0 0 1 0 1 1 1 0 1 0 0 2 0 
+M = 128868
+N = 1000
+time: 2827.15
+[1] "Genotype reading is done"
+inital tau is  1 0.1 
+iGet_Coef:  1 
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+Tau:
+[1] 1.0 0.1
+Fixed-effect coefficients:
+           [,1]
+[1,]  2.5204651
+[2,] -0.7686048
+[3,] -0.4564900
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+Variance component estimates:
+[1] 1.0000000 0.1000393
+
+Iteration  1 1 0.1000393 :
+tau0_v1:  1 0.1000393 
+iGet_Coef:  1 
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+Tau:
+[1] 1.0000000 0.1000393
+Fixed-effect coefficients:
+           [,1]
+[1,]  2.5204682
+[2,] -0.7686078
+[3,] -0.4564912
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+iter from getPCG1ofSigmaAndVector 2
+[1] 0.0000000 0.5193922
+tau:  1 0.337878 
+tau0:  1 0.1000393 
+
+Iteration  2 1 0.337878 :
+tau0_v1:  1 0.337878 
+iGet_Coef:  1 
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+Tau:
+[1] 1.000000 0.337878
+Fixed-effect coefficients:
+           [,1]
+[1,]  2.5237141
+[2,] -0.7728829
+[3,] -0.4578314
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+[1] 0.00000000 0.01873267
+tau:  1 0.3511601 
+tau0:  1 0.337878 
+
+Final  1 0.3511601 :
+iGet_Coef:  1 
+iter from getPCG1ofSigmaAndVector 4
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+Tau:
+[1] 1.0000000 0.3511601
+Fixed-effect coefficients:
+           [,1]
+[1,]  2.5274384
+[2,] -0.7734419
+[3,] -0.4578625
+   user  system elapsed 
+282.246   0.704 143.972 
+t_end - t_begin, fitting the NULL model took
+   user  system elapsed 
+281.050   0.587 142.671 
+Start estimating variance ratios
+
+Family: binomial 
+Link function: logit 
+
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+Only one variance ratio will be estimated using randomly selected markers with MAC >= 20
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+iter from getPCG1ofSigmaAndVector 3
+81310 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+37839 th marker
+G0 1 1 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 3
+111799 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+44844 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+128241 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+111467 th marker
+G0 0 0 0 0 0 1 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+101559 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+60569 th marker
+G0 0 1 0 1 0 0 0 0 1 1 
+iter from getPCG1ofSigmaAndVector 3
+44558 th marker
+G0 2 0 1 1 1 1 1 2 0 1 
+iter from getPCG1ofSigmaAndVector 3
+105100 th marker
+G0 1 2 2 2 0 1 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 3
+[1] "OK"
+[1] "OK1"
+106706 th marker
+G0 0 0 0 0 2 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 3
+65323 th marker
+G0 1 1 0 2 2 0 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 3
+73469 th marker
+G0 0 0 0 0 1 0 0 1 0 0 
+iter from getPCG1ofSigmaAndVector 3
+18300 th marker
+G0 0 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+89691 th marker
+G0 1 1 2 0 0 1 1 1 1 1 
+iter from getPCG1ofSigmaAndVector 3
+64816 th marker
+G0 1 1 2 2 0 1 1 1 1 2 
+iter from getPCG1ofSigmaAndVector 3
+12185 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+115944 th marker
+G0 0 1 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+61416 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+85954 th marker
+G0 0 0 0 0 1 1 1 0 1 0 
+iter from getPCG1ofSigmaAndVector 3
+[1] "OK"
+[1] "OK1"
+72856 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+24549 th marker
+G0 1 0 0 1 0 0 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 3
+110113 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+74818 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+37852 th marker
+G0 0 0 0 0 1 0 1 1 0 0 
+iter from getPCG1ofSigmaAndVector 3
+123024 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+47099 th marker
+G0 1 0 1 0 0 0 1 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+13376 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+57250 th marker
+G0 0 0 0 0 0 1 0 0 0 1 
+iter from getPCG1ofSigmaAndVector 3
+79156 th marker
+G0 0 0 0 0 0 0 0 0 0 0 
+iter from getPCG1ofSigmaAndVector 3
+[1] "OK"
+[1] "OK1"
+[1] "OK2"
+CV for variance ratio estimate using  30  markers is  0.0001797473  <  0.001 
+varRatio 0.9406645 
+[1] 0.9406645
+          [,1]
+[1,] 0.9406645
+          [,1]
+[1,] 0.9406645
+[1] "./output/example_binary_includenonAutoforvarRatio.varianceRatio.txt"
+         V1
+1 0.9406645
+closed the plinkFile!
+$by.self
+                                                  self.time self.pct total.time
+".Call"                                              274.84    99.80     274.84
+"gc"                                                   0.24     0.09       0.24
+"lapply"                                               0.04     0.01       0.08
+"scoreTest_SPAGMMAT_forVarianceRatio_binaryTrait"      0.02     0.01      61.00
+"FUN"                                                  0.02     0.01       0.04
+"unique"                                               0.02     0.01       0.04
+".getClassesFromCache"                                 0.02     0.01       0.02
+"[.data.frame"                                         0.02     0.01       0.02
+"$<-"                                                  0.02     0.01       0.02
+"as.matrix"                                            0.02     0.01       0.02
+"c"                                                    0.02     0.01       0.02
+"cb$putcode"                                           0.02     0.01       0.02
+"cb$putconst"                                          0.02     0.01       0.02
+"exists"                                               0.02     0.01       0.02
+"lazyLoadDBfetch"                                      0.02     0.01       0.02
+"mayCallBrowserList"                                   0.02     0.01       0.02
+"sample.int"                                           0.02     0.01       0.02
+                                                  total.pct
+".Call"                                               99.80
+"gc"                                                   0.09
+"lapply"                                               0.03
+"scoreTest_SPAGMMAT_forVarianceRatio_binaryTrait"     22.15
+"FUN"                                                  0.01
+"unique"                                               0.01
+".getClassesFromCache"                                 0.01
+"[.data.frame"                                         0.01
+"$<-"                                                  0.01
+"as.matrix"                                            0.01
+"c"                                                    0.01
+"cb$putcode"                                           0.01
+"cb$putconst"                                          0.01
+"exists"                                               0.01
+"lazyLoadDBfetch"                                      0.01
+"mayCallBrowserList"                                   0.01
+"sample.int"                                           0.01
+
+$by.total
+                                                  total.time total.pct
+"fitNULLGLMM"                                         275.40    100.00
+".Call"                                               274.84     99.80
+"system.time"                                         214.32     77.82
+"glmmkin.ai_PCG_Rcpp_Binary"                          214.18     77.77
+"fitglmmaiRPCG"                                       127.10     46.15
+"scoreTest_SPAGMMAT_forVarianceRatio_binaryTrait"      61.00     22.15
+"getAIScore"                                           56.72     20.60
+"getSigma_G"                                           50.36     18.29
+"Get_Coef"                                             27.40      9.95
+"getCoefficients"                                      27.40      9.95
+"getSigma_X"                                           10.38      3.77
+"setgeno"                                               2.84      1.03
+"gc"                                                    0.24      0.09
+"doTryCatch"                                            0.14      0.05
+"tryCatch"                                              0.14      0.05
+"tryCatchList"                                          0.14      0.05
+"tryCatchOne"                                           0.14      0.05
+"cmpfun"                                                0.12      0.04
+"compiler:::tryCmpfun"                                  0.12      0.04
+"rbind"                                                 0.12      0.04
+"lapply"                                                0.08      0.03
+"cmp"                                                   0.08      0.03
+"cmpCall"                                               0.08      0.03
+"genCode"                                               0.08      0.03
+"h"                                                     0.08      0.03
+"tryInline"                                             0.08      0.03
+":::"                                                   0.06      0.02
+"asNamespace"                                           0.06      0.02
+"get"                                                   0.06      0.02
+"getNamespace"                                          0.06      0.02
+"loadNamespace"                                         0.06      0.02
+"FUN"                                                   0.04      0.01
+"unique"                                                0.04      0.01
+"cmpComplexAssign"                                      0.04      0.01
+"cmpForBody"                                            0.04      0.01
+"cmpPrim1"                                              0.04      0.01
+"cmpSymbolAssign"                                       0.04      0.01
+"data.frame"                                            0.04      0.01
+"data.table:::fread"                                    0.04      0.01
+"sapply"                                                0.04      0.01
+".getClassesFromCache"                                  0.02      0.01
+"[.data.frame"                                          0.02      0.01
+"$<-"                                                   0.02      0.01
+"as.matrix"                                             0.02      0.01
+"c"                                                     0.02      0.01
+"cb$putcode"                                            0.02      0.01
+"cb$putconst"                                           0.02      0.01
+"exists"                                                0.02      0.01
+"lazyLoadDBfetch"                                       0.02      0.01
+"mayCallBrowserList"                                    0.02      0.01
+"sample.int"                                            0.02      0.01
+".checkGroupSigLength"                                  0.02      0.01
+".make_numeric_version"                                 0.02      0.01
+".recMembers"                                           0.02      0.01
+".updateMethodsInTable"                                 0.02      0.01
+"["                                                     0.02      0.01
+"append"                                                0.02      0.01
+"cmpCallArgs"                                           0.02      0.01
+"cmpCallSymFun"                                         0.02      0.01
+"cmpIs"                                                 0.02      0.01
+"cmpSym"                                                0.02      0.01
+"constantFold"                                          0.02      0.01
+"constantFoldCall"                                      0.02      0.01
+"findCenvVar"                                           0.02      0.01
+"findLocalsList"                                        0.02      0.01
+"findLocalsList1"                                       0.02      0.01
+"fun"                                                   0.02      0.01
+"funEnv"                                                0.02      0.01
+"getClassDef"                                           0.02      0.01
+"getFoldFun"                                            0.02      0.01
+"getGeneric"                                            0.02      0.01
+"getGroupMembers"                                       0.02      0.01
+"getInlineInfo"                                         0.02      0.01
+"is"                                                    0.02      0.01
+"isBaseVar"                                             0.02      0.01
+"make.functionContext"                                  0.02      0.01
+"make.promiseContext"                                   0.02      0.01
+"mayCallBrowser"                                        0.02      0.01
+"methods:::.getGenerics"                                0.02      0.01
+"methods::cacheMetaData"                                0.02      0.01
+"package_version"                                       0.02      0.01
+"packageVersion"                                        0.02      0.01
+"Recall"                                                0.02      0.01
+"runHook"                                               0.02      0.01
+"sample"                                                0.02      0.01
+"solve.default"                                         0.02      0.01
+"solve"                                                 0.02      0.01
+"standardGeneric"                                       0.02      0.01
+"unlist"                                                0.02      0.01
+                                                  self.time self.pct
+"fitNULLGLMM"                                          0.00     0.00
+".Call"                                              274.84    99.80
+"system.time"                                          0.00     0.00
+"glmmkin.ai_PCG_Rcpp_Binary"                           0.00     0.00
+"fitglmmaiRPCG"                                        0.00     0.00
+"scoreTest_SPAGMMAT_forVarianceRatio_binaryTrait"      0.02     0.01
+"getAIScore"                                           0.00     0.00
+"getSigma_G"                                           0.00     0.00
+"Get_Coef"                                             0.00     0.00
+"getCoefficients"                                      0.00     0.00
+"getSigma_X"                                           0.00     0.00
+"setgeno"                                              0.00     0.00
+"gc"                                                   0.24     0.09
+"doTryCatch"                                           0.00     0.00
+"tryCatch"                                             0.00     0.00
+"tryCatchList"                                         0.00     0.00
+"tryCatchOne"                                          0.00     0.00
+"cmpfun"                                               0.00     0.00
+"compiler:::tryCmpfun"                                 0.00     0.00
+"rbind"                                                0.00     0.00
+"lapply"                                               0.04     0.01
+"cmp"                                                  0.00     0.00
+"cmpCall"                                              0.00     0.00
+"genCode"                                              0.00     0.00
+"h"                                                    0.00     0.00
+"tryInline"                                            0.00     0.00
+":::"                                                  0.00     0.00
+"asNamespace"                                          0.00     0.00
+"get"                                                  0.00     0.00
+"getNamespace"                                         0.00     0.00
+"loadNamespace"                                        0.00     0.00
+"FUN"                                                  0.02     0.01
+"unique"                                               0.02     0.01
+"cmpComplexAssign"                                     0.00     0.00
+"cmpForBody"                                           0.00     0.00
+"cmpPrim1"                                             0.00     0.00
+"cmpSymbolAssign"                                      0.00     0.00
+"data.frame"                                           0.00     0.00
+"data.table:::fread"                                   0.00     0.00
+"sapply"                                               0.00     0.00
+".getClassesFromCache"                                 0.02     0.01
+"[.data.frame"                                         0.02     0.01
+"$<-"                                                  0.02     0.01
+"as.matrix"                                            0.02     0.01
+"c"                                                    0.02     0.01
+"cb$putcode"                                           0.02     0.01
+"cb$putconst"                                          0.02     0.01
+"exists"                                               0.02     0.01
+"lazyLoadDBfetch"                                      0.02     0.01
+"mayCallBrowserList"                                   0.02     0.01
+"sample.int"                                           0.02     0.01
+".checkGroupSigLength"                                 0.00     0.00
+".make_numeric_version"                                0.00     0.00
+".recMembers"                                          0.00     0.00
+".updateMethodsInTable"                                0.00     0.00
+"["                                                    0.00     0.00
+"append"                                               0.00     0.00
+"cmpCallArgs"                                          0.00     0.00
+"cmpCallSymFun"                                        0.00     0.00
+"cmpIs"                                                0.00     0.00
+"cmpSym"                                               0.00     0.00
+"constantFold"                                         0.00     0.00
+"constantFoldCall"                                     0.00     0.00
+"findCenvVar"                                          0.00     0.00
+"findLocalsList"                                       0.00     0.00
+"findLocalsList1"                                      0.00     0.00
+"fun"                                                  0.00     0.00
+"funEnv"                                               0.00     0.00
+"getClassDef"                                          0.00     0.00
+"getFoldFun"                                           0.00     0.00
+"getGeneric"                                           0.00     0.00
+"getGroupMembers"                                      0.00     0.00
+"getInlineInfo"                                        0.00     0.00
+"is"                                                   0.00     0.00
+"isBaseVar"                                            0.00     0.00
+"make.functionContext"                                 0.00     0.00
+"make.promiseContext"                                  0.00     0.00
+"mayCallBrowser"                                       0.00     0.00
+"methods:::.getGenerics"                               0.00     0.00
+"methods::cacheMetaData"                               0.00     0.00
+"package_version"                                      0.00     0.00
+"packageVersion"                                       0.00     0.00
+"Recall"                                               0.00     0.00
+"runHook"                                              0.00     0.00
+"sample"                                               0.00     0.00
+"solve.default"                                        0.00     0.00
+"solve"                                                0.00     0.00
+"standardGeneric"                                      0.00     0.00
+"unlist"                                               0.00     0.00
+
+$sample.interval
+[1] 0.02
+
+$sampling.time
+[1] 275.4
+

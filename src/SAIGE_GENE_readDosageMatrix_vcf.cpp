@@ -69,6 +69,19 @@ bool setvcfDosageMatrix(const std::string& vcfFileName,  const std::string& vcfF
 }
 
 // [[Rcpp::export]]
+int getNumofSamples_Matrix(){
+  return(marker_file.samples().size());
+}
+
+// [[Rcpp::export]]
+std::vector< std::string > getSampleIDlist_vcfMatrix(){
+  std::vector< std::string > sampleIDList (marker_file.samples().begin(), marker_file.samples().end());
+  return(sampleIDList);
+}
+
+
+
+// [[Rcpp::export]]
 Rcpp::List getGenoOfGene_vcf(std::string marker_group_line, float minInfo) {
   //bool isGetDosage = TRUE;
   using namespace Rcpp;
@@ -86,9 +99,11 @@ Rcpp::List getGenoOfGene_vcf(std::string marker_group_line, float minInfo) {
     float AC = 0;
     std::vector<std::string> markerIDs;
     std::vector<float> markerAFs;
+    std::vector<int> positions;
     std::vector<float> MACs;
     markerIDs.clear();
     markerAFs.clear();
+    positions.clear();
     MACs.clear();
     for ( ; it != end; ++it)
     {
@@ -177,6 +192,7 @@ Rcpp::List getGenoOfGene_vcf(std::string marker_group_line, float minInfo) {
         cnt = cnt + 1;
         markerIDs.push_back(marker_id);
         markerAFs.push_back(AF);
+	positions.push_back(it->position());
         MACs.push_back(MAC);
         //std::cout << "MAF: " << MAF << " minMAF: " << minMAF << " maxMAF: " << maxMAF << std::endl;
 	//std::cout << "marker_id: " << marker_id << std::endl;
@@ -190,6 +206,8 @@ Rcpp::List getGenoOfGene_vcf(std::string marker_group_line, float minInfo) {
     result["cnt"] = cnt;
     result["iIndex"] = iIndexVec;
     result["jIndex"] = jIndexVec;
+    result["MACs"] = MACs; 	
+    result["positions"] = positions;
   }else{
     //if there is it === end
     result["cnt"] = 0;

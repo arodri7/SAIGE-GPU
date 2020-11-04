@@ -1,4 +1,8 @@
-#binary
+#check the help info for step 1
+#Rscript step1_fitNULLGLMM.R --help
+
+#For Binary traits
+
 #For single-variant association tests. 
 #Not use sparse GRM and not use categorical variance ratios#
 #randomly selected markers with MAC >= 20 in the plink file are used to estimate the variance ratio
@@ -16,21 +20,24 @@ Rscript step1_fitNULLGLMM.R     \
 	--LOCO=FALSE	\
 	--minMAFforGRM=0.01
 
+        #--vcfFile=./input/genotype_10markers.missingness.vcf.gz \
+        #--vcfFileIndex=./input/genotype_10markers.missingness.vcf.gz.tbi \
+        #--vcfField=GT \
 #step 2: perform the single-variant association tests
 Rscript step2_SPAtests.R	\
-        --vcfFile=./input/genotype_10markers.missingness.vcf.gz \
-        --vcfFileIndex=./input/genotype_10markers.missingness.vcf.gz.tbi \
-        --vcfField=GT \
+	--vcfFile=./input/dosage_10markers.vcf.gz \
+	--vcfFileIndex=./input/dosage_10markers.vcf.gz.tbi \
+	--vcfField=DS \
         --chrom=1 \
         --minMAF=0.0001 \
         --minMAC=1 \
-        --sampleFile=./input/sampleIDindosage.txt \
         --GMMATmodelFile=./output/example_binary.rda \
         --varianceRatioFile=./output/example_binary.varianceRatio.txt \
-        --SAIGEOutputFile=./output/example_binary.SAIGE.vcf.genotype.txt \
+        --SAIGEOutputFile=./output/example_binary.SAIGE.vcf.genotype.txt_new \
         --numLinesOutput=2 \
         --IsOutputAFinCaseCtrl=TRUE	\
-	--IsOutputNinCaseCtrl=TRUE	
+	--IsOutputNinCaseCtrl=TRUE	\
+	--IsOutputHetHomCountsinCaseCtrl=TRUE	
 
 	##drop samples with missing genotypes/dosages
 	##--IsDropMissingDosages=TRUE, if FALSE, missing genotypes/dosages will be mean imputed
@@ -38,7 +45,7 @@ Rscript step2_SPAtests.R        \
         --vcfFile=./input/genotype_10markers.missingness.vcf.gz \
         --vcfFileIndex=./input/genotype_10markers.missingness.vcf.gz.tbi \
         --vcfField=GT \
-        --SAIGEOutputFile=./output/example_binary.SAIGE.vcf.genotype.dropmissing.txt \
+        --SAIGEOutputFile=./output/example_binary.SAIGE.vcf.genotype.dropmissing.txt_new \
         --chrom=1 \
         --minMAF=0.0001 \
         --minMAC=1 \
@@ -47,9 +54,24 @@ Rscript step2_SPAtests.R        \
         --varianceRatioFile=./output/example_binary.varianceRatio.txt \
         --numLinesOutput=2 \
         --IsOutputAFinCaseCtrl=TRUE	\
-	--IsDropMissingDosages=TRUE     
+	--IsDropMissingDosages=TRUE    \
+	--IsOutputHetHomCountsinCaseCtrl=TRUE	\
+	--IsOutputNinCaseCtrl=TRUE 
 
-
+Rscript step2_SPAtests.R        \
+        --bgenFile=./input/genotype_10markers.missingness.bgen	\
+	--bgenFileIndex=./input/genotype_10markers.missingness.bgen.bgi \
+	--SAIGEOutputFile=./output/example_binary.SAIGE.bgen.genotype.dropmissing.txt \
+        --chrom=1 \
+        --minMAF=0.0001 \
+        --minMAC=1 \
+        --sampleFile=./input/samplefileforbgen_1000samples.txt \
+        --GMMATmodelFile=./output/example_binary.rda \
+        --varianceRatioFile=./output/example_binary.varianceRatio.txt \
+        --numLinesOutput=2 \
+        --IsOutputAFinCaseCtrl=TRUE     \
+        --IsDropMissingDosages=TRUE     \
+        --IsOutputHetHomCountsinCaseCtrl=TRUE
 
 Rscript step2_SPAtests.R        \
 	--bgenFile=./input/genotype_100markers.bgen	\
@@ -64,8 +86,26 @@ Rscript step2_SPAtests.R        \
         --varianceRatioFile=./output/example_binary.varianceRatio.txt \
         --numLinesOutput=2 \
         --IsOutputAFinCaseCtrl=TRUE	\
-	--IsDropMissingDosages=TRUE     
+	--IsDropMissingDosages=TRUE    	\
+	--IsOutputHetHomCountsinCaseCtrl=TRUE 
 
+
+	##recoding non-PAR X chromosome for males (genotype/dosage * 2)
+Rscript step2_SPAtests.R        \
+	--vcfFile=./input/genotype_10markers_chrX.vcf.gz \
+	--vcfFileIndex=./input/genotype_10markers_chrX.vcf.gz.tbi	\
+	--vcfField=GT \
+        --chrom=chrX \
+        --minMAF=0.0001 \
+        --minMAC=1 \
+        --sampleFile_male=./input/sampleid_males.txt \
+        --GMMATmodelFile=./output/example_binary.rda \
+        --varianceRatioFile=./output/example_binary.varianceRatio.txt \
+        --SAIGEOutputFile=./output/example_binary.SAIGE.vcf.genotype.chrX.txt \
+        --numLinesOutput=2 \
+        --IsOutputAFinCaseCtrl=TRUE     \
+	--is_rewrite_XnonPAR_forMales=TRUE	\
+	--X_PARregion=1-9,12-15
 
 
 	##conditional analysis
@@ -86,6 +126,33 @@ Rscript step2_SPAtests.R        \
 	--IsDropMissingDosages=TRUE	\
 	--condition=1:4_A/C
 
+
+#####Positive signal is simulated
+Rscript step1_fitNULLGLMM.R     \
+        --plinkFile=./input/nfam_100_nindep_0_step1_includeMoreRareVariants_poly \
+        --phenoFile=./input/Prev_0.1_nfam_1000.pheno_positive_pheno.txt \
+        --phenoCol=y \
+        --covarColList=x1,x2 \
+        --sampleIDColinphenoFile=IID \
+        --traitType=binary        \
+        --outputPrefix=./output/example_binary_positive_signal \
+        --nThreads=4    \
+        --LOCO=FALSE    \
+        --minMAFforGRM=0.01
+
+Rscript step2_SPAtests.R        \
+        --vcfFile=./input/nfam_1000_MAF0.2_nMarker1_nseed200.vcf.gz \
+        --vcfFileIndex=./input/nfam_1000_MAF0.2_nMarker1_nseed200.vcf.gz.tbi \
+        --vcfField=GT \
+        --chrom=1 \
+        --minMAF=0.0001 \
+        --minMAC=1 \
+        --GMMATmodelFile=./output/example_binary_positive_signal.rda \
+        --varianceRatioFile=./output/example_binary_positive_signal.varianceRatio.txt \
+        --SAIGEOutputFile=./output/example_binary_positive_signal.assoc.step2.txt \
+        --numLinesOutput=2 \
+        --IsOutputAFinCaseCtrl=TRUE     \
+        --IsDropMissingDosages=TRUE
 
 #For gene-based test
 #step 0: create a sparse GRM for a data set. This sparse GRM only needs to be created once for each data set, e.g. a biobank,  and can be used for all different phenotypes as long as all tested samples are in the sparse GRM. 
@@ -425,7 +492,7 @@ Rscript step2_SPAtests.R \
         --sampleFile=./input/samplelist.txt \
         --GMMATmodelFile=./output/example_binary.rda \
         --varianceRatioFile=./output/example_binary_cate_v2.varianceRatio.txt \
-        --SAIGEOutputFile=./output/example_binary.SAIGE.gene_conditional.txt \
+        --SAIGEOutputFile=./output/example_binary.SAIGE.gene_conditional.txt_0.37 \
         --numLinesOutput=1 \
         --groupFile=./input/groupFile_geneBasedtest.txt    \
         --sparseSigmaFile=./output/example_binary_cate_v2.varianceRatio.txt_relatednessCutoff_0.125.sparseSigma.mtx       \
@@ -448,10 +515,9 @@ Rscript step2_SPAtests.R \
         --minMAF=0 \
         --minMAC=0.5 \
         --maxMAFforGroupTest=0.01       \
-        --sampleFile=./input/samplelist.txt \
         --GMMATmodelFile=./output/example_binary.rda \
         --varianceRatioFile=./output/example_binary_cate_v2.varianceRatio.txt \
-        --SAIGEOutputFile=./output/example_binary.SAIGE.gene_conditional_withspecifiedWeights.txt \
+        --SAIGEOutputFile=./output/example_binary.SAIGE.gene_conditional_withspecifiedWeights.txt.0.37 \
         --numLinesOutput=1 \
         --groupFile=./input/groupFile_geneBasedtest_withWeights.txt    \
         --sparseSigmaFile=./output/example_binary_cate_v2.varianceRatio.txt_relatednessCutoff_0.125.sparseSigma.mtx       \
@@ -462,3 +528,5 @@ Rscript step2_SPAtests.R \
 	--weightsIncludeinGroupFile=TRUE	\
 	--weights_for_G2_cond=3,1	\
 	--condition=chr1:32302_A/C,chr1:32304_A/C	
+
+#--sampleFile=./input/samplelist.txt \

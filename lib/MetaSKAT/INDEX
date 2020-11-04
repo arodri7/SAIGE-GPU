@@ -1,0 +1,8 @@
+Example                 Example dataset
+Generate_Meta_Files     Generate summary statistics files
+MetaSKAT_MSSD_OneSet    Meta analysis SKAT with summary data from each
+                        study cohort.
+MetaSKAT_wZ             Meta analysis SKAT with individual level
+                        genotype data
+Meta_Null_Model         Get parameters and residuals from H0
+Open_MSSD_File_2Read    Read Meta SSD and Info files

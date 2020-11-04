@@ -3,7 +3,11 @@
 options(stringsAsFactors=F)
 
 ## load R libraries
-library(SAIGE)
+#library(SAIGE, lib.loc="../../install_dir/0.38")
+#library(SAIGE, lib.loc="../../install_dir/0.36.6")
+#library(SAIGE, lib.loc="/net/hunt/zhowei/project/imbalancedCaseCtrlMixedModel/Rpackage_SPAGMMAT/installSAIGEFolder/0.39.5")
+library(SAIGE, lib.loc="/home/ubuntu/saige/lib/")
+library(Rcpp)
 require(optparse) #install.packages("optparse")
 
 print(sessionInfo())
@@ -54,6 +58,8 @@ option_list <- list(
     help="Path and prefix of the output files [default='~/']"),
   make_option("--outputPrefix_varRatio", type="character", default=NULL,
     help="Path and prefix of the output the variance ratio file [default=NULL]. if NULL, it will be the same as the outputPrefix"),
+  make_option("--IsOverwriteVarianceRatioFile", type="logical", default=FALSE,
+    help="Whether to overwrite the variance ratio file if the file exist.[default='FALSE']"),
   make_option("--IsSparseKin", type="logical", default=FALSE,
     help="Whether to use sparse kinship for association test [default='FALSE']"),
   make_option("--sparseGRMFile", type="character", default=NULL,
@@ -83,7 +89,19 @@ option_list <- list(
   make_option("--minCovariateCount", type="numeric", default=-1,
     help="If binary covariates have a count less than this, they will be excluded from the model to avoid convergence issues [default=-1] (no covariates will be excluded)."),
   make_option("--includeNonautoMarkersforVarRatio", type="logical", default=FALSE,
-    help="Whether to allow for non-autosomal markers for variance ratio. [default, 'FALSE']")
+    help="Whether to allow for non-autosomal markers for variance ratio. [default, 'FALSE']"),
+  make_option("--FemaleOnly", type="logical", default=FALSE,
+    help="Whether to run Step 1 for females only [default=FALSE]. if TRUE, --sexCol and --FemaleCode need to be specified"), 
+  make_option("--MaleOnly", type="logical", default=FALSE,
+    help="Whether to run Step 1 for males only [default=FALSE]. if TRUE, --sexCol and --MaleCode need to be specified"),   
+  make_option("--sexCol", type="character", default="",
+   help="Coloumn name for sex in the phenotype file, e.g Sex"),
+  make_option("--FemaleCode", type="character", default="1",
+   help="Values in the column for sex in the phenotype file are used for females [default, '1']"),
+  make_option("--MaleCode", type="character", default="0",
+   help="Values in the column for sex in the phenotype file are used for males [default, '0']"),
+  make_option("--noEstFixedEff", type="logical", default=FALSE,
+   help="Whether to estimate fixed effect coeffciets. [default, 'FALSE']")
 )
 
 
@@ -112,7 +130,9 @@ cateVarRatioMaxMACVecInclude <- convertoNumeric(x=strsplit(opt$cateVarRatioMaxMA
 
 #set seed
 set.seed(1)
-
+#Sys.setenv("PKG_LIBS"="-lsuperlu")
+#Rcpp::sourceCpp('/home/ubuntu/saige/SAIGE/src/SAIGE_fitGLMM_fast.cpp')
+Rprof()
 
 fitNULLGLMM(plinkFile=opt$plinkFile,
             phenoFile = opt$phenoFile,
@@ -137,6 +157,7 @@ fitNULLGLMM(plinkFile=opt$plinkFile,
             ratioCVcutoff = opt$ratioCVcutoff,
             outputPrefix = opt$outputPrefix,
 	    outputPrefix_varRatio = opt$outputPrefix_varRatio,
+	    IsOverwriteVarianceRatioFile = opt$IsOverwriteVarianceRatioFile,
             IsSparseKin = opt$IsSparseKin,
             sparseGRMFile=opt$sparseGRMFile,
             sparseGRMSampleIDFile=opt$sparseGRMSampleIDFile,
@@ -151,4 +172,14 @@ fitNULLGLMM(plinkFile=opt$plinkFile,
 	    useSparseSigmaforInitTau = opt$useSparseSigmaforInitTau,
 	    minMAFforGRM = opt$minMAFforGRM,
 	    minCovariateCount=opt$minCovariateCount,
-	    includeNonautoMarkersforVarRatio=opt$includeNonautoMarkersforVarRatio)	
+	    includeNonautoMarkersforVarRatio=opt$includeNonautoMarkersforVarRatio,
+	    sexCol=opt$sexCol,
+    	    FemaleCode=opt$FemaleCode,
+	    FemaleOnly=opt$FemaleOnly,
+	    MaleCode=opt$MaleCode,
+	    MaleOnly=opt$MaleOnly,
+	   noEstFixedEff=opt$noEstFixedEff 
+	)	
+Rprof(NULL)    ## Turn off the profiler
+summaryRprof()
+

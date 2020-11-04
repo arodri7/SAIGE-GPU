@@ -1,0 +1,8 @@
+SPAmeta                 Meta-analysis using SPA test summary statistics
+Saddle_Prob             Calculate Saddlepoint p values (for external
+                        libraries)
+ScoreTest_SPA           Score test based on saddlepoint approximation
+ScoreTest_SPA_wMeta     Prepare summary statistics for meta-analysis
+                        and perform SPA test.
+ScoreTest_wSaddleApprox_NULL_Model
+                        Preparing the null model
